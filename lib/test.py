@@ -1,6 +1,9 @@
 from movie import Movie
 from director import Director
 
+# Rest of your script remains unchanged...
+
+
 # Drop and recreate tables (for testing purposes)
 Movie.drop_table()
 Movie.create_table()
@@ -9,31 +12,31 @@ Director.drop_table()
 Director.create_table()
 
 # Create instances of Movie and Director
-movie1 = Movie(None, "The Shawshank Redemption", "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.", "Drama", 142, "1994-09-23")
+movie1 = Movie(None, "The Redemption", "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.", "Drama", 142, "1994-09-23")
 movie1.save()
 
 movie2 = Movie(None, "The Godfather", "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.", "Crime", 175, "1972-03-24")
 movie2.save()
 
-director1 = Director(None, "Frank Darabont", "Castle Rock Entertainment")
+director1 = Director(None, "Molly Nzembi", "Castle Rock Entertainment")
 director1.save()
 
-director2 = Director(None, "Francis Ford Coppola", "Paramount Pictures")
+director2 = Director(None, "Francis Omondi", "Paramount Pictures")
 director2.save()
 
 # Update a movie and a director
-movie1.title = "The Shawshank Redemption (1994)"
+movie1.title = "The Shawshank "
 movie1.update()
 
-director2.production = "Paramount Pictures, American Zoetrope"
+director2.production = "Paramount Pictures"
 director2.update()
 
 # Delete a movie and a director
-#movie2.delete()
-#director1.delete()
+# movie2.delete()
+# director1.delete()
 
-# Find by name examples
-found_movie = Movie.find_by_name("The Shawshank Redemption (1994)")
+# Find by title examples (corrected)
+found_movie = Movie.find_by_title("The Shawshank Redemption (1994)")
 if found_movie:
     print("Found Movie:", found_movie)
 else:

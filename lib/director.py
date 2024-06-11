@@ -1,13 +1,23 @@
 from config import conn, cursor
 
 class Director:
-    def __init__(self, id, name, production):
+    def __init__(self, id=None, name=None, production=None):
         self.id = id
         self.name = name
         self.production = production
 
     def __repr__(self):
         return f"<Director {self.id}: {self.name}, {self.production}>"
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        if not value:
+            raise ValueError("Name cannot be empty")
+        self._name = value
 
     @classmethod
     def create_table(cls):
@@ -40,7 +50,6 @@ class Director:
             """
             cursor.execute(sql, (self.name, self.production))
             conn.commit()
-
             self.id = cursor.lastrowid
 
     def update(self):
@@ -76,3 +85,4 @@ class Director:
         cursor.execute(sql)
         rows = cursor.fetchall()
         return [cls(*row) for row in rows]
+
